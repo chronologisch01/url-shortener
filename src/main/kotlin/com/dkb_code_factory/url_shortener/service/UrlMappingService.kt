@@ -9,7 +9,7 @@ import java.util.UUID
 class UrlMappingService(private val urlMappingRepository: UrlMappingRepository) {
 
     fun createShortUrl(originalUrl: String): String {
-        val mapping = UrlMapping(originalUrl = originalUrl, shortCode = UUID.randomUUID().toString())
+        val mapping = UrlMapping(originalUrl = originalUrl, shortCode = generateAlphanumericId(8))
         urlMappingRepository.save(mapping)
         return mapping.shortCode
     }
@@ -19,5 +19,8 @@ class UrlMappingService(private val urlMappingRepository: UrlMappingRepository) 
         return mapping?.originalUrl
     }
 
-
+    private fun generateAlphanumericId(length: Int): String {
+        val charset = ('A'..'Z') + ('a'..'z') + ('0'..'9')
+        return List(length) { charset.random() }.joinToString("")
+    }
 }
