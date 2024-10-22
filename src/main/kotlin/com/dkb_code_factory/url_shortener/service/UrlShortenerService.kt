@@ -18,5 +18,4 @@ class UrlShortenerService(private val urlShortenerRepository: UrlShortenerReposi
         val mapping = urlShortenerRepository.findByShortCode(shortCode)
         return mapping?.originalUrl
     }
-
 }

@@ -5,16 +5,14 @@ import com.dkb_code_factory.url_shortener.model.dto.CreateUrlResponse
 import com.dkb_code_factory.url_shortener.service.UrlShortenerService
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.junit.jupiter.api.Test
-
 import org.mockito.kotlin.given
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
-
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
@@ -40,9 +38,11 @@ class UrlShortenerControllerTest {
         given(urlShortenerService.createShortUrl(originalUrl)).willReturn(shortCode)
 
         // when and then
-        mockMvc.perform(post("/api/urls")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(objectMapper.writeValueAsString(request)))
+        mockMvc.perform(
+            post("/api/urls")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request))
+        )
             .andExpect(status().isCreated)
             .andExpect(content().json(objectMapper.writeValueAsString(response)))
     }

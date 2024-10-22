@@ -4,21 +4,16 @@ import com.dkb_code_factory.url_shortener.helper.AlphaNumericIdCreator
 import com.dkb_code_factory.url_shortener.model.UrlMapping
 import com.dkb_code_factory.url_shortener.repository.UrlShortenerRepository
 import io.mockk.MockKAnnotations
-import io.mockk.Runs
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
-import io.mockk.just
 import io.mockk.mockkObject
 import io.mockk.slot
-import io.mockk.unmockkObject
 import io.mockk.verify
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
-
 
 class UrlShortenerServiceTest {
 
@@ -52,7 +47,6 @@ class UrlShortenerServiceTest {
         assertEquals(shortCode, result)
         assertEquals(originalUrl, mappingSlot.captured.originalUrl)
         assertEquals(shortCode, mappingSlot.captured.shortCode)
-
     }
 
     @Test
