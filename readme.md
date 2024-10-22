@@ -2,7 +2,7 @@
 (I will assume docker is set up locally)
 ## Ensure a postgres instance is running locally 
 ```
-docker run -e POSGRES_PASSWORD=password -e POSTGRES_DB=urlshortener -p 5432:5432 postgres
+docker run -e POSTGRES_PASSWORD=password -e POSTGRES_DB=urlshortener -p 5432:5432 postgres
 ```
 ## Running urlshortener app
 ```gradle boot run```
