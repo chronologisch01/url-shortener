@@ -4,7 +4,7 @@ import com.dkb_code_factory.url_shortener.exception.UrlNotFoundException
 import com.dkb_code_factory.url_shortener.model.dto.CreateUrlRequest
 import com.dkb_code_factory.url_shortener.model.dto.CreateUrlResponse
 import com.dkb_code_factory.url_shortener.model.dto.GetUrlResponse
-import com.dkb_code_factory.url_shortener.service.UrlMappingService
+import com.dkb_code_factory.url_shortener.service.UrlShortenerService
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -18,8 +18,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/urls")
-@Validated
-class UrlMappingController(private val service: UrlMappingService) {
+class UrlShortenerController(private val service: UrlShortenerService) {
 
     @PostMapping
     fun createShortUrl(@RequestBody request: CreateUrlRequest): ResponseEntity<CreateUrlResponse> {

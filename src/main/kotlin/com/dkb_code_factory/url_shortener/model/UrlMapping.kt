@@ -15,8 +15,8 @@ data class UrlMapping(
     val id: Long = 0,
 
     @Column(nullable = false, unique = true, length = 2048)
-    val originalUrl: String,
+    val originalUrl: String = "",
 
     @Column(nullable = false, unique = true)
-    val shortCode: String
+    val shortCode: String = ""
 )
